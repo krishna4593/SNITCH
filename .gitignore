@@ -1,0 +1,65 @@
+# ------------------------------
+# Node modules (VERY IMPORTANT)
+# ------------------------------
+node_modules/
+
+Backend/node_modules/
+
+# ------------------------------
+# Environment variables (Secrets)
+# ------------------------------
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# ------------------------------
+# Build / Production files
+# ------------------------------
+dist/
+build/
+.next/
+out/
+
+# ------------------------------
+# Logs
+# ------------------------------
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ------------------------------
+# OS files
+# ------------------------------
+.DS_Store
+Thumbs.db
+
+# ------------------------------
+# IDE / Editor files
+# ------------------------------
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ------------------------------
+# Cache files
+# ------------------------------
+.cache/
+.parcel-cache/
+.eslintcache
+
+# ------------------------------
+# Testing
+# ------------------------------
+coverage/
+
+# ------------------------------
+# Misc
+# ------------------------------
+*.zip
+*.tar
+*.gz
