@@ -7,6 +7,8 @@ const config = {
     mongoUri: process.env.MONGO_URI || '',
     nodeEnv: process.env.NODE_ENV || 'development',
     jwtSecret: process.env.JWT_SECRET || 'change_this_jwt_secret',
+    googleClientId: process.env.GOOGLE_CLIENT_ID || '',
+    googleClientSecret: process.env.GOOGLE_CLIENT_SECRET || '',
     jwtExpiresIn: process.env.JWT_EXPIRES_IN || '7d',
     cookieExpireMs: Number(process.env.COOKIE_EXPIRE_MS) || 7 * 24 * 60 * 60 * 1000,
     corsOrigins: (process.env.CORS_ORIGINS || 'http://localhost:5173,http://localhost:5174')

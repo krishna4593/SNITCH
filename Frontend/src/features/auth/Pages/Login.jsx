@@ -124,6 +124,13 @@ const Login = () => {
                 </a>
               </div>
 
+              <div className="flex justify-end">
+                <a href="/api/auth/google" className="text-[11px] text-[#ffd700] font-bold tracking-wider hover:underline underline-offset-4">
+                  Continue with Google
+                </a>
+              </div>
+
+
               {/* CTA */}
               <div className="pt-4">
                 <button
@@ -157,4 +164,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Login;
