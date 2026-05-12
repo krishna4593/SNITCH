@@ -17,12 +17,16 @@ const userSchema = new mongoose.Schema(
 		},
 		password: {
 			type: String,
-			required: true,
+			required: function() {
+				return !this.googleId;
+			},
 			
 		},
 		contact: {
 			type: String,
-			required: true,
+			required: function() {
+				return !this.googleId;
+			},
 			unique: true,
 			trim: true,
 		},
@@ -30,6 +34,10 @@ const userSchema = new mongoose.Schema(
 			type: String,
 			enum: ["buyer", "seller"],
 			default: "buyer",
+		},
+		googleId: {
+			type: String,
+			unique: true
 		},
 	},
 	{

@@ -185,7 +185,7 @@ const Register = () => {
               </div>
 
               {/* CTA */}
-              <div className="pt-4">
+              <div className="pt-4 flex flex-col space-y-4">
                 <button
                   disabled={loading}
                   className={`w-full py-5 bg-[#ffd700] text-[#3a3000] font-black uppercase tracking-[0.2em] text-xs rounded-full shadow-[0_10px_30px_rgba(255,215,0,0.2)] hover:shadow-[0_15px_40px_rgba(255,215,0,0.3)] active:scale-[0.98] transition-all duration-300 ${
@@ -195,6 +195,10 @@ const Register = () => {
                 >
                   {loading ? 'Creating Account...' : 'Sign Up'}
                 </button>
+                <a href="/api/auth/google" className="flex items-center justify-center w-full py-5 bg-white text-[#3a3000] font-medium rounded-full shadow-md hover:shadow-lg transition">
+                  <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google" className="w-5 h-5 mr-2" />
+                  Continue with Google
+                </a>
               </div>
             </form>
 
@@ -202,7 +206,7 @@ const Register = () => {
             <footer className="mt-10 text-center">
               <p className="text-[#d0c6ab] text-[11px] tracking-wide">
                 Already part of the network?
-                <a className="text-[#ffd700] font-bold hover:underline underline-offset-4 ml-1" href="#">
+                <a className="text-[#ffd700] font-bold hover:underline underline-offset-4 ml-1" onClick={() => navigate('/login')} style={{cursor:'pointer'}}>
                   LOGIN
                 </a>
               </p>
