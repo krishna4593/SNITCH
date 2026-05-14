@@ -3,6 +3,7 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import morgan from 'morgan';
 import authRouter from './routes/auth.route.js';
+import productRouter from './routes/product.route.js';
 import config from './config/config.js';
 import passport from 'passport';
 import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
@@ -16,10 +17,10 @@ passport.use(new GoogleStrategy({
     clientSecret: config.googleClientSecret,
     callbackURL: "/api/auth/google/callback"
 }, (accessToken, refreshToken, profile, done) => {
-    // Handle the user profile after Google authentication
+    return done(null, profile);
+}));
 
-  return done(null, profile);
-}));	
+
 
 const corsOptions = {
 	origin: (origin, callback) => {
@@ -33,6 +34,8 @@ const corsOptions = {
 	methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
 };
 
+
+
 app.use(morgan('dev'));
 app.use(cors(corsOptions));
 app.use(express.json());
@@ -40,7 +43,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 app.use('/api/auth', authRouter);
-
+app.use('/api/products', productRouter);
 
 
 export default app;
