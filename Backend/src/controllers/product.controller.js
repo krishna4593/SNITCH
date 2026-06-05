@@ -27,3 +27,9 @@ export const createProduct = async (req, res) => {
         res.status(201).json({ message: "Product created successfully", product });
 
 }
+
+export const getSellerProducts = async (req, res) => {
+    const seller = req.user._id;
+    const products = await productModel.find({ seller }).populate('seller', 'name email');
+    res.status(200).json({ products });
+}
