@@ -50,9 +50,9 @@ const Dashboard = () => {
                 </div>
             </div>
 
-            <main className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-16 pt-8 md:pb-5 pt-10">
+            <main className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-16 pt-8 md:pb-5 pt-7">
 
-                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-8 md:mb-12">
+                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-7 md:mb-6">
                     <div>
                         <h2 className="text-3xl md:text-4xl font-light font-['Manrope',sans-serif] tracking-tight">Your Collection</h2>
                         <p className="text-[#7A6E63] mt-2 md:mt-3 max-w-xl text-sm leading-relaxed">

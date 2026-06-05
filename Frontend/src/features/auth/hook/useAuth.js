@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { register,login } from "../service/auth.api";
+import { register,login, getMe } from "../service/auth.api";
 import { setUser,setError,setLoading } from "../state/auth.slice";
 
 const extractApiErrorMessage = (err, fallbackMessage) => {
@@ -45,8 +45,14 @@ export const useAuth =()=>{
         }
     }
 
+    const handleGetMe = async()=>{
+        const data = await getMe()
+        dispatch(setUser(data))
+    }
+
     return {
         handleRegister,
-        handleLogin
+        handleLogin,
+        handleGetMe
     }
 }
