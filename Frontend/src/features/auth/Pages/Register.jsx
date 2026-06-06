@@ -62,7 +62,7 @@ const Register = () => {
         e.preventDefault();
         if (validateForm()) {
             try {
-                await handleRegister(
+            const user=    await handleRegister(
                     formData.fullName,
                     formData.email,
                     formData.password,
@@ -70,7 +70,11 @@ const Register = () => {
                     formData.isSeller
                 );
                 // On success, navigate to home or dashboard
-                navigate('/');
+                 if(user.role==="seller"){
+                    navigate('/seller/dashboard');
+                }else{
+                    navigate('/');
+                }
             } catch (err) {
                 // error is set in redux state, so no local action needed
             }

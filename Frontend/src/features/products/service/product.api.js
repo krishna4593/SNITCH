@@ -13,3 +13,12 @@ export async function getSellerProducts(){
     return response.data
 }
 
+export async function getAllProducts(){
+    const response = await productAPiInstance.get("/")
+    return response.data
+}
+
+export async function getProductDetails(productId){
+    const response = await productAPiInstance.get(`/${productId}`)
+    return response.data
+}

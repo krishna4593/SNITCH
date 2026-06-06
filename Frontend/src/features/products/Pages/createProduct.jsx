@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 const CreateProduct = () => {
     const { handleCreateProduct } = useProduct();
-    // const navigate = useNavigate(); // uncomment if navigation is needed after creation
+     const navigate = useNavigate()
     
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -104,6 +104,7 @@ const CreateProduct = () => {
             });
             setImages([]);
             setImagePreviews([]);
+            navigate('/seller/dashboard');
             
         } catch (err) {
             setError(err.response?.data?.message || err.message || 'Failed to create product');

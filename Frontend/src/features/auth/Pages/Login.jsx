@@ -51,15 +51,23 @@ const Login = () => {
         e.preventDefault();
         if (validateForm()) {
             try {
-                await handleLogin(
+           const user = await handleLogin(
                     formData.email,
                     formData.password
                 );
                 // On success, navigate to home or dashboard
-                navigate('/');
+                if(user.role==="seller"){
+                    navigate('/seller/dashboard');
+                }else{
+                    navigate('/');
+                }
             } catch (err) {
-                // error is set in redux state, so no local action needed
+             // error is set in redux state, so no local action needed
             }
+            setFormData({
+                email: '',
+                password: '',
+            });
         }
     };
 

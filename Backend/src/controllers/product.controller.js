@@ -33,3 +33,25 @@ export const getSellerProducts = async (req, res) => {
     const products = await productModel.find({ seller }).populate('seller', 'name email');
     res.status(200).json({ products });
 }
+
+export const getAllProducts = async (req, res) =>{
+  const products = await productModel.find()
+  res.status(200).json({
+    products
+  })
+}
+
+export const getProductDetails = async (req, res) => {
+  const { productId } = req.params;
+  const product = await productModel.findById(productId)
+  if(!product){
+    return res.status(404).json({
+      message:"Product not found",
+      success:false
+    })
+  }
+  res.status(200).json({ 
+    message: "Product details fetched successfully",
+    success:true,
+    product });
+}

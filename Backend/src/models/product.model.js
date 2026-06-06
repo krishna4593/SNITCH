@@ -34,8 +34,37 @@ const productSchema = new mongoose.Schema({
             type:String,
             required:true
         }
-    }]
+    }],
+    variants:[{
+        images:[{
+            ImageUrl:{
+                type:String,
+                required:true
+            }}],
+        
 
+        price:{
+            amount:{
+                type:Number,
+                required:true
+            },
+            currency:{
+                type:String,
+                enum:['INR', 'USD', 'EUR', 'GBP', 'JPY', 'AUD', 'CAD', 'CHF', 'CNY', 'SEK', 'NZD'],
+                default:'INR'
+
+            }
+        },
+        attributes:{
+            type:Map,
+            of:String
+        },
+        stock:{
+            type:Number,
+            default:0
+        }
+        
+    }]
 })
 
 const productModel = mongoose.model('Product', productSchema);

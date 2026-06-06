@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import { register,login, getMe } from "../service/auth.api";
 import { setUser,setError,setLoading } from "../state/auth.slice";
+import { cacheSignal } from "react";
 
 const extractApiErrorMessage = (err, fallbackMessage) => {
     const errors = err?.response?.data?.errors;
@@ -21,7 +22,7 @@ export const useAuth =()=>{
             dispatch(setError(null));
             const data = await register({ fullname, email, password, contact, isSeller });
             dispatch(setUser(data.user));
-            return data;
+            return data.user;
         } catch (err) {
             dispatch(setError(extractApiErrorMessage(err, "Registration failed")));
             throw err;
@@ -36,18 +37,29 @@ export const useAuth =()=>{
             dispatch(setError(null));
             const data = await login(email, password);
             dispatch(setUser(data.user));
-            return data;
+            return data.user;
         } catch (err) {
             dispatch(setError(extractApiErrorMessage(err, "Login failed")));
             throw err;
         } finally {
             dispatch(setLoading(false));
         }
+        
     }
 
     const handleGetMe = async()=>{
-        const data = await getMe()
-        dispatch(setUser(data))
+      try{
+         dispatch(setLoading(true))
+          
+           const data = await getMe()
+           dispatch(setUser(data.user))
+      }
+      catch(err){
+           console.log(err)
+      }
+      finally{
+        dispatch(setLoading(false))
+      }
     }
 
     return {
